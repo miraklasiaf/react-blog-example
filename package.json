@@ -1,0 +1,41 @@
+{
+  "name": "react-blog-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cra-template": "1.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:styles": "postcss src/assets/css/tailwind.pcss -o src/assets/css/styles.css",
+    "prebuild": "SET NODE_ENV=production yarn build:styles",
+    "prestart": "yarn build:styles"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.0",
+    "autoprefixer": "^9.7.4",
+    "postcss-cli": "^7.1.0",
+    "tailwindcss": "^1.2.0"
+  }
+}
