@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from '@reach/router'
 //  import axios from 'axios'
 import axios from '../../../axios'
 
@@ -6,7 +7,8 @@ export default class NewPost extends Component {
     state = {
         title: '',
         content: '',
-        author: 'Faisal'
+        author: 'Faisal',
+        submitted: false
     }
 
     handlePostData = () => {
@@ -18,12 +20,22 @@ export default class NewPost extends Component {
       axios.post('/posts', data)
         .then(res => {
           console.log(res)
+          this.setState({
+            submitted: true
+          })
         })
     }
 
     render() {
+        let redirect = null;
+
+        if(this.state.submitted) {
+          redirect = <Redirect from="/new-post" to="/" />;
+        }
+
         return (
           <div className="w-full bg-gray-600 flex flex-col items-center p-5">
+            {redirect}
             <div className="w-1/3 border p-3 rounded-lg">
               <h1 className="text-gray-100 text-lg mt-2 text-center">
                 Add a Post

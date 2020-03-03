@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from '../../../axios'
 import Post from '../../../components/Post'
+import { Link } from '@reach/router'
 
 export default class Posts extends Component {
     state = {
@@ -21,10 +22,7 @@ export default class Posts extends Component {
             posts: updatedPosts
           })
         })
-        .catch(err => {
-          //  console.log(err)
-          //  this.setState({error: true})
-        })
+        .catch(err => {})
         ;
     }
 
@@ -41,18 +39,19 @@ export default class Posts extends Component {
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
             return (
+              <Link to={'/post/' + post.id} key={post.id} className="w-1/2 p-5">
                 <Post
-                title={post.title}
-                author={post.author}
-                clicked={() => this.handlePostClick(post.id)}
-                key={post.id}
+                  title={post.title}
+                  author={post.author}
+                  clicked={() => this.handlePostClick(post.id)}
                 />
+              </Link>
             );
             });
         }
 
         return (
-          <div className="w-full bg-gray-700 flex flex-col items-center p-5">
+          <div className="flex flex-col bg-gray-600 items-center">
             {posts}
           </div>
         );

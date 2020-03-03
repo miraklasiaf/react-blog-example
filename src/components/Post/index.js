@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Post(props) {
     return (
-      <div 
-        className="flex flex-col w-1/3 justify-center items-center px-3 py-2 border m-2 hover:bg-gray-500"
+      <div
+        className="flex flex-col items-center px-3 py-2 border hover:bg-gray-500"
         onClick={props.clicked}
       >
         <h1 className="text-white text-center">{props.title}</h1>
